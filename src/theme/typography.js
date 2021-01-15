@@ -1,5 +1,11 @@
 const defaultFont = 'Nunito Sans, sans-serif';
 
+const xs = {
+  fontFamily: defaultFont,
+  fontSize: 12,
+  lineHeight: 1.5,
+};
+
 const sm = {
   fontFamily: defaultFont,
   fontSize: 14,
@@ -34,6 +40,7 @@ const lgBold = {
 };
 
 const typography = {
+  xs,
   sm,
   smBold,
   md,

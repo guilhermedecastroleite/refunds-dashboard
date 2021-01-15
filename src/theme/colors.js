@@ -15,19 +15,21 @@ const gray8 = '#343a42';
 const gray9 = '#353a40';
 const gray10 = '#303030';
 const gray11 = '#030303';
+const gray12 = '#dfe2e6';
+const gray13 = '#848a91';
 
 const blue1 = '#e7f2fd';
-const blue2 = '#51c1c3';
-const blue3 = '#00c5fc';
-const blue4 = '#0f68bd';
-const blue5 = '#053d4e';
+const blue2 = '#00c5fc';
+const blue3 = '#0f68bd';
+const blue4 = '#053d4e';
 
 const green1 = '#ecf8f8';
 const green2 = '#edfff5';
 const green3 = '#00d7ce';
-const green4 = '#4acc82';
-const green5 = '#009d43';
-const green6 = '#03a046';
+const green4 = '#51c1c3';
+const green5 = '#4acc82';
+const green6 = '#009d43';
+const green7 = '#03a046';
 
 const red1 = '#fbeaea';
 const red2 = '#d6342c';
@@ -50,12 +52,13 @@ const colors = {
   gray9,
   gray10,
   gray11,
+  gray12,
+  gray13,
 
   blue1,
   blue2,
   blue3,
   blue4,
-  blue5,
 
   green1,
   green2,
@@ -63,6 +66,7 @@ const colors = {
   green4,
   green5,
   green6,
+  green7,
 
   red1,
   red2,
