@@ -6,12 +6,20 @@ import theme from '../../theme/theme';
 const Breadcrumbs = ({ history }) => (
   <Flex>
     {history.map((item, index, arr) => {
-      const lastItem = index !== arr.length - 1;
+      const notLast = index !== arr.length - 1;
       return (
         <>
-          <Text color={lastItem ? theme.colors.blue2 : theme.colors.gray5} {...theme.typography.medium}>{`${item.label}`}</Text>
-          <Text mx='6px' color={theme.colors.gray5} {...theme.typography.medium}>
-            {`${lastItem ? '/' : ''}`}
+          <Text
+            cursor='pointer'
+            color={notLast ? theme.colors.blue2 : theme.colors.gray5}
+            // eslint-disable-next-line no-console
+            onClick={() => notLast && console.log(`Go to ${item.href}`)}
+            {...theme.typography.md}
+          >
+            {`${item.label}`}
+          </Text>
+          <Text mx='6px' color={theme.colors.gray5} {...theme.typography.md}>
+            {`${notLast ? '/' : ''}`}
           </Text>
         </>
       );
