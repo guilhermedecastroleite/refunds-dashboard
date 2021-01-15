@@ -1,4 +1,8 @@
 const white = '#ffffff';
+const offWhite = '#fafbfc';
+const offWhite2 = '#f4f6fa';
+
+const black = '#000000';
 
 const gray1 = '#f0f3f7';
 const gray2 = '#d0d3d6';
@@ -30,6 +34,10 @@ const red2 = '#d6342c';
 
 const colors = {
   white,
+  offWhite,
+  offWhite2,
+
+  black,
 
   gray1,
   gray2,
