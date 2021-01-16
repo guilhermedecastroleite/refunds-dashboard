@@ -6,6 +6,11 @@ const xs = {
   lineHeight: 1.5,
 };
 
+const xsBold = {
+  ...xs,
+  fontWeight: 'bold',
+};
+
 const sm = {
   fontFamily: defaultFont,
   fontSize: 14,
@@ -41,6 +46,7 @@ const lgBold = {
 
 const typography = {
   xs,
+  xsBold,
   sm,
   smBold,
   md,

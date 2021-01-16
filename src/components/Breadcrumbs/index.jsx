@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Flex, Text } from '@chakra-ui/react';
@@ -8,7 +9,7 @@ const Breadcrumbs = ({ history }) => (
     {history.map((item, index, arr) => {
       const notLast = index !== arr.length - 1;
       return (
-        <>
+        <React.Fragment key={item.label}>
           <Text
             cursor='pointer'
             color={notLast ? theme.colors.blue2 : theme.colors.gray5}
@@ -21,7 +22,7 @@ const Breadcrumbs = ({ history }) => (
           <Text mx='6px' color={theme.colors.gray5} {...theme.typography.md}>
             {`${notLast ? '/' : ''}`}
           </Text>
-        </>
+        </React.Fragment>
       );
     })}
   </Flex>

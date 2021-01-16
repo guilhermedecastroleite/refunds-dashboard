@@ -30,6 +30,8 @@ const green4 = '#51c1c3';
 const green5 = '#4acc82';
 const green6 = '#009d43';
 const green7 = '#03a046';
+const green8 = '#e6fff0';
+const green9 = '#30a8a8';
 
 const red1 = '#fbeaea';
 const red2 = '#d6342c';
@@ -67,6 +69,8 @@ const colors = {
   green5,
   green6,
   green7,
+  green8,
+  green9,
 
   red1,
   red2,

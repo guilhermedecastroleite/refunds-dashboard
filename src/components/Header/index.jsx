@@ -6,8 +6,8 @@ import { FaRegEdit, FaGraduationCap } from 'react-icons/fa';
 
 import theme from '../../theme/theme';
 
-const ListItem = ({ title, content }) => (
-  <Flex>
+const ListItem = ({ title, content, ...props }) => (
+  <Flex {...props}>
     <Text mr='29px' color={theme.colors.white} {...theme.typography.sm}>{title}</Text>
     <Text color={theme.colors.white} {...theme.typography.smBold}>{content}</Text>
   </Flex>
@@ -50,6 +50,7 @@ const Header = () => {
         {/** Basic Data */}
         <Box flex={4} h='100%'>
           <ListItem
+            mt='11px'
             title='Justificativa'
             content='Reembolso referente a confraternização das equipes Backoffice / BI / Analytics.'
           />

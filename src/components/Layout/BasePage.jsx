@@ -14,7 +14,7 @@ const BasePage = ({ children }) => (
 );
 
 BasePage.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.any,
 };
 
 BasePage.defaultProps = {
