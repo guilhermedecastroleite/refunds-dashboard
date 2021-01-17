@@ -1,9 +1,9 @@
 import { Box, Flex } from '@chakra-ui/react';
 
 import Breadcrumbs from '../components/Breadcrumbs';
-import Header from '../components/Header';
+import Header from '../containers/Header';
 import AddExpense from '../containers/Expenses/AddExpense';
-import Timeline from '../containers/Timeline/Timeline';
+import Timeline from '../containers/Timeline';
 import ActionBar from '../containers/ActionBar';
 import SideBar from '../containers/SideBar';
 
