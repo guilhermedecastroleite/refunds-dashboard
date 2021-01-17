@@ -1,13 +1,14 @@
-import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 import {
-  Box, Divider, Flex, Text,
+  Box, Flex, Text,
 } from '@chakra-ui/react';
-import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
-import Chip from '../../components/Chips';
 
 import theme from '../../theme/theme';
+import getSidebarData from '../../api/sidebar';
 
-import EarningsAndExpenses from './EarningsAndExpenses';
+import Chip from '../../components/Chips';
+
+import Refund from './Refund';
 import Statement from './Statement';
 
 const statuses = (appTheme) => ({
@@ -15,13 +16,34 @@ const statuses = (appTheme) => ({
     label: 'Concluído',
     color: appTheme.colors.green6,
   },
+  open: {
+    label: 'Aguardando financeiro',
+    color: appTheme.colors.blue4,
+  },
 });
 
 const SideBar = () => {
-  const statusData = 'finished';
-  const refundValue = 'BRL 1.147,13';
+  const [sideBarData, setSideBarData] = useState([{
+    id: null,
+    accountabilityStatus: 'OPEN',
+    currency: {
+      code: '',
+      symbol: '',
+    },
+    declared: 0,
+    approved: 0,
+    received: 0,
+  }]);
 
-  const status = statuses(theme)[statusData];
+  const status = statuses(theme)[sideBarData[0].accountabilityStatus.toLowerCase()];
+
+  useEffect(() => {
+    const fetchSidebarData = async () => {
+      const { data } = await getSidebarData();
+      setSideBarData(data.content);
+    };
+    fetchSidebarData();
+  }, []);
 
   return (
     <Box
@@ -39,29 +61,18 @@ const SideBar = () => {
             <Text {...theme.typography.xlBold}>{status.label}</Text>
           </Box>
         </Chip>
-
-        {/** Refund Value */}
-        <Box w='100%' textAlign='center'>
-          <Text {...theme.typography.sm} mt='32px' color={theme.colors.gray4}>
-            {'Valor a receber'.toUpperCase()}
-          </Text>
-          <Text {...theme.typography.xlBold} mt='12px' color={theme.colors.blue4}>
-            {refundValue}
-          </Text>
-        </Box>
-
-        <Divider orientation='horizontal' mt='24px' w='200px' h='1px' borderColor={theme.colors.gray1} opacity={1} />
-
-        {/** Earnings and Expenses */}
-        <Flex mt='57px' w='319px' alignItems='center' justifyContent='space-between'>
-          <EarningsAndExpenses text='Gastou' value='BRL 1.147,13' icon={FaArrowUp} />
-          <Divider orientation='vertical' w='1px' h='37px' borderColor={theme.colors.gray1} opacity={1} />
-          <EarningsAndExpenses text='Recebeu' value='BRL 00,00' icon={FaArrowDown} />
-        </Flex>
       </Flex>
 
-      {/** Statement */}
-      <Statement mt='40px' />
+      {/** Refund List */}
+      {sideBarData.map((item) => (
+        <>
+          <Flex px='37px' flexDirection='column' alignItems='center'>
+            <Refund key={item.id} item={item} />
+          </Flex>
+          {/** Statement */}
+          <Statement mt='40px' item={item} />
+        </>
+      ))}
     </Box>
   );
 };

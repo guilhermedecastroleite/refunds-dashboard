@@ -6,7 +6,7 @@ import {
 import theme from '../../theme/theme';
 
 const ListItem = ({
-  type, title, value, ...props
+  type, title, value, color, ...props
 }) => (
   <Grid templateColumns='repeat(3, 1fr)' gap='24px' {...props}>
     <GridItem colSpan={2}>
@@ -18,7 +18,7 @@ const ListItem = ({
       </Text>
     </GridItem>
     <GridItem colSpan={1}>
-      <Text {...theme.typography.smBold} color={theme.colors.blue4}>
+      <Text {...theme.typography.smBold} color={color || theme.colors.blue4}>
         {value}
       </Text>
     </GridItem>
@@ -29,15 +29,17 @@ ListItem.propTypes = {
   type: PropTypes.string,
   title: PropTypes.string,
   value: PropTypes.string,
+  color: PropTypes.string,
 };
 
 ListItem.defaultProps = {
   type: '',
   title: '',
   value: '',
+  color: '',
 };
 
-const Statement = ({ ...props }) => (
+const Statement = ({ item, ...props }) => (
   <Box {...props}>
     <Text {...theme.typography.mdBold} ml='24px' color={theme.colors.gray9}>
       Extrato
@@ -56,12 +58,36 @@ const Statement = ({ ...props }) => (
       </Grid>
 
       <Box mt='8px'>
-        <ListItem type='Despesas declaradas' title='Despesas declaradas pelo trooper' value='BRL 1.147,13' />
-        <ListItem mt='16px' type='Despesas aprovadas' title='Despesas declaradas pelo trooper' value='BRL 1.147,13' />
-        <ListItem mt='16px' type='Pagamento realizado' title='Despesas declaradas pelo trooper' value='BRL 1.147,13' />
+        <ListItem
+          type='Despesas declaradas'
+          title='Despesas declaradas pelo trooper'
+          value={`${item.currency.code} ${item.declared.toLocaleString()}`}
+
+        />
+        <ListItem
+          mt='16px'
+          type='Despesas aprovadas'
+          title='Despesas aprovadas pelo financeiro'
+          value={`${item.currency.code} ${item.approved.toLocaleString()}`}
+        />
+        <ListItem
+          mt='16px'
+          type='Pagamento realizado'
+          title='Pagamento realizado pelo financeiro'
+          value={`${item.currency.code} ${item.received.toLocaleString()}`}
+          color={theme.colors.green7}
+        />
       </Box>
     </Box>
   </Box>
 );
+
+Statement.propTypes = {
+  item: PropTypes.object,
+};
+
+Statement.defaultProps = {
+  item: {},
+};
 
 export default Statement;
