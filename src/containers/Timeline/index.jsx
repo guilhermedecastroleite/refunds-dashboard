@@ -9,6 +9,7 @@ import getTimelineData from '../../api/timeline';
 const Timeline = ({ boxProps }) => {
   const [timelineData, setTimelineData] = useState([
     {
+      id: null,
       cardType: 'expense',
       cardDate: new Date(),
       expenseTypeIcon: null,
