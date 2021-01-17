@@ -13,7 +13,7 @@ const Chip = ({
 }) => (
   <Flex
     p='6px 12px'
-    maxW='fit-content'
+    w='fit-content'
     color={color}
     border={`1px solid ${color}`}
     bg={hex2rgba(color, 0.10)}

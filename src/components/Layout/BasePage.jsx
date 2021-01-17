@@ -5,10 +5,12 @@ import theme from '../../theme/theme';
 
 const BasePage = ({ children }) => (
   <Box overflow='auto' minHeight='100vh'>
-    <Box w='100%' h='48px' bg={theme.colors.blue4} />
+    <Box w='100%' h='48px' zIndex={9999} bg={theme.colors.blue4} position='fixed' top={0} />
     <Flex>
-      <Box w='220px' h='100vh' bg={theme.colors.blue4} />
-      {children}
+      <Box w='220px' h='100vh' zIndex={9999} bg={theme.colors.blue4} position='fixed' left={0} />
+      <Box mt='48px' ml='220px'>
+        {children}
+      </Box>
     </Flex>
   </Box>
 );

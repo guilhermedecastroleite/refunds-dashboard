@@ -5,6 +5,12 @@ import TimelineCard from '../../components/Cards/TimelineCard';
 const Timeline = ({ boxProps }) => (
   <Box {...boxProps}>
     <TimelineCard />
+    <TimelineCard />
+    <TimelineCard />
+    <TimelineCard />
+    <TimelineCard />
+    <TimelineCard />
+
   </Box>
 );
 

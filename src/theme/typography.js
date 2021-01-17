@@ -44,6 +44,17 @@ const lgBold = {
   fontWeight: 'bold',
 };
 
+const xl = {
+  fontFamily: defaultFont,
+  fontSize: 24,
+  lineHeight: 1.5,
+};
+
+const xlBold = {
+  ...xl,
+  fontWeight: 'bold',
+};
+
 const typography = {
   xs,
   xsBold,
@@ -53,6 +64,8 @@ const typography = {
   mdBold,
   lg,
   lgBold,
+  xl,
+  xlBold,
 };
 
 export default typography;
