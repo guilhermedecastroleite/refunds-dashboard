@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box, Flex, Text,
 } from '@chakra-ui/react';
@@ -27,6 +27,7 @@ const SideBar = () => {
     id: null,
     accountabilityStatus: 'OPEN',
     currency: {
+      id: null,
       code: '',
       symbol: '',
     },
@@ -65,13 +66,13 @@ const SideBar = () => {
 
       {/** Refund List */}
       {sideBarData.map((item) => (
-        <>
+        <React.Fragment key={item.currency.id}>
           <Flex px='37px' flexDirection='column' alignItems='center'>
-            <Refund key={item.id} item={item} />
+            <Refund item={item} />
           </Flex>
           {/** Statement */}
           <Statement mt='40px' item={item} />
-        </>
+        </React.Fragment>
       ))}
     </Box>
   );
