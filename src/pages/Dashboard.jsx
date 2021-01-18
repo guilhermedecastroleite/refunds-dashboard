@@ -38,17 +38,16 @@ const Dashboard = () => {
     fetchTimelineData();
   }, []);
 
-  console.log('Timeline: ', timelineData.sort((a, b) => b.cardDate - a.cardDate));
-
   return (
     <Box
       pl='28px'
+      pr={['16px', '16px', '28px', '28px', 0]}
       pt='12px'
       w='100%'
       bg={theme.colors.offWhite2}
     >
       <Breadcrumbs />
-      <Flex>
+      <Flex flexDirection={['column', 'column', 'column', 'column', 'row']}>
         <Box>
           <Header />
           {/** Top Buttons */}
