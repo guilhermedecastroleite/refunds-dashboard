@@ -8,6 +8,7 @@ const breakpoints = createBreakpoints({
   md: '768px',
   lg: '960px',
   xl: '1200px',
+  xxl: '1800px',
 });
 
 const chakraUiTheme = extendTheme({
@@ -21,7 +22,7 @@ const chakraUiTheme = extendTheme({
       sizes: {
         md: {
           height: '36px',
-          fontSize: '16px',
+          fontSize: ['12px', '13px', '16px'],
         },
       },
       variants: {
