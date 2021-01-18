@@ -104,7 +104,7 @@ const AddExpenseForm = ({ formik }) => {
           placeholder='Selecione'
         >
           {Object.entries(currencies).map((item) => (
-            <option key={item[0]} value={item[0]}>{item[1]}</option>
+            <option key={item[0]} value={item[1]}>{item[1]}</option>
           ))}
         </Select>
 

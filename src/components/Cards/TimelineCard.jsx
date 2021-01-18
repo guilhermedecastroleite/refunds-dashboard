@@ -3,7 +3,7 @@ import {
   Box, Flex, Icon, Text,
 } from '@chakra-ui/react';
 import {
-  FaAsterisk, FaConciergeBell, FaUtensils, FaUsers, FaReceipt, FaMoneyCheckAlt, FaChevronDown,
+  FaAsterisk, FaConciergeBell, FaUtensils, FaUsers, FaReceipt, FaMoneyCheckAlt, FaChevronDown, FaBus,
 } from 'react-icons/fa';
 import { format } from 'date-fns';
 
@@ -16,6 +16,7 @@ const expenseIcons = {
   'concierge-bell': FaConciergeBell,
   utensils: FaUtensils,
   'money-check-alt': FaMoneyCheckAlt,
+  bus: FaBus,
 };
 
 const types = ({
@@ -85,7 +86,7 @@ const TimelineCard = ({ item, ...props }) => {
           >
             <Icon fontSize='20px' as={currentItem[type].icon} color={currentItem[type].iconColor} />
           </Flex>
-          <Text mt='10px' {...theme.typography.sm}>{format(item.cardDate, 'dd/MM/yyyy')}</Text>
+          <Text mt='10px' {...theme.typography.sm}>{format(new Date(item.cardDate), 'dd/MM/yyyy')}</Text>
         </Flex>
 
         {/** Category and Title */}

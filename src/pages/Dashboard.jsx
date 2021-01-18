@@ -1,16 +1,44 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { useState, useEffect } from 'react';
+import {
+  Box, Button, Flex, Icon,
+} from '@chakra-ui/react';
+import { FaReceipt } from 'react-icons/fa';
+import { CgNotes } from 'react-icons/cg';
 
-import Breadcrumbs from '../components/Breadcrumbs';
 import Header from '../containers/Header';
-import AddExpense from '../containers/Expenses/AddExpense';
+import SideBar from '../containers/SideBar';
 import Timeline from '../containers/Timeline';
 import ActionBar from '../containers/ActionBar';
-import SideBar from '../containers/SideBar';
+import Breadcrumbs from '../components/Breadcrumbs';
+import AddExpense from '../containers/Expenses/AddExpense';
 
 import theme from '../theme/theme';
+import getTimelineData from '../api/timeline';
 
 const Dashboard = () => {
-  const remove = false;
+  const [showForm, setShowForm] = useState(false);
+  const [timelineData, setTimelineData] = useState([
+    {
+      id: null,
+      cardType: 'expense',
+      cardDate: new Date(),
+      expenseTypeIcon: null,
+    },
+  ]);
+
+  const updateData = (value) => {
+    setTimelineData([...timelineData, value]);
+  };
+
+  useEffect(() => {
+    const fetchTimelineData = async () => {
+      const { data } = await getTimelineData();
+      setTimelineData(data.content);
+    };
+    fetchTimelineData();
+  }, []);
+
+  console.log('Timeline: ', timelineData.sort((a, b) => b.cardDate - a.cardDate));
 
   return (
     <Box
@@ -23,8 +51,30 @@ const Dashboard = () => {
       <Flex>
         <Box>
           <Header />
-          <AddExpense boxProps={{ mt: '24px' }} />
-          <Timeline boxProps={{ mt: '24px' }} />
+          {/** Top Buttons */}
+          <Flex mt='24px' justifyContent='flex-end'>
+            <Button
+              variant='outline'
+              leftIcon={<Icon as={CgNotes} />}
+            >
+              Inserir notas em lote
+            </Button>
+            <Button
+              ml='24px'
+              variant='outline'
+              leftIcon={<Icon as={FaReceipt} />}
+              onClick={() => setShowForm(true)}
+            >
+              Nova despesa
+            </Button>
+          </Flex>
+          {showForm && (
+            <AddExpense
+              onCancel={() => setShowForm(false)}
+              onUpdate={updateData}
+            />
+          )}
+          <Timeline boxProps={{ mt: '24px' }} data={timelineData} />
           <ActionBar />
         </Box>
         <SideBar />
