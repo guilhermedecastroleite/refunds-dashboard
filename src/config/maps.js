@@ -1,8 +1,15 @@
 import theme from '../theme/theme';
 
+export const currencies = {
+  brl: 'BRL',
+  usd: 'USD',
+  mxn: 'MXN',
+};
+
 export const expenses = {
   food: 'Alimentação',
   'hotel-fee': 'Hotel',
+  transport: 'Transporte',
 };
 
 export const statuses = {

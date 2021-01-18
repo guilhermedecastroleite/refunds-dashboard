@@ -1,7 +1,11 @@
 import axios from 'axios';
 
-const AddExpense = async () => (
-  axios.get('https://api-front-end-challenge.buildstaging.com/api/expense/add')
+const addExpense = async ({ data }) => (
+  axios({
+    method: 'post',
+    url: 'https://api-front-end-challenge.buildstaging.com/api/expense/add',
+    data,
+  })
 );
 
-export default AddExpense;
+export default addExpense;

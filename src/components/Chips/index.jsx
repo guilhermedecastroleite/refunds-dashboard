@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
-import { Flex, Text } from '@chakra-ui/react';
-
-import theme from '../../theme/theme';
+import { Flex } from '@chakra-ui/react';
 
 const hex2rgba = (hex, alpha = 1) => {
   const [r, g, b] = hex.match(/\w\w/g).map((x) => parseInt(x, 16));
