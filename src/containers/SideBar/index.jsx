@@ -48,9 +48,8 @@ const SideBar = () => {
 
   return (
     <Box
-      ml='54px'
+      ml={[0, 0, 0, '16px', '24px', '40px', '54px']}
       pt='40px'
-      minW='393px'
       minH='100vh'
       bg={theme.colors.white}
     >

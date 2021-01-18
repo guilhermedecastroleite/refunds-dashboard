@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
 import { Button, Flex } from '@chakra-ui/react';
 
 import theme from '../../theme/theme';
 
 const ActionBar = () => (
   <Flex
-    mt='58px'
+    mt={['24px', '24px', '58px']}
+    mb={['24px', '24px', '24px', '24px', 0]}
     ml='-28px'
     mr='-54px'
     p='24px 48px'

@@ -5,7 +5,7 @@ import theme from '../../theme/theme';
 
 const BasePage = ({ children }) => (
   <Box overflow='auto' minHeight='100vh'>
-    <Box w='100%' h='48px' zIndex={9999} bg={theme.colors.blue4} position='fixed' top={0} />
+    <Box w='100%' h={['64px', '64px', '64px', '64px', '64px', '48px']} zIndex={9999} bg={theme.colors.blue4} position='fixed' top={0} />
     <Flex>
       <Box
         w='220px'
@@ -14,9 +14,9 @@ const BasePage = ({ children }) => (
         bg={theme.colors.blue4}
         position='fixed'
         left={0}
-        display={['none', 'none', 'none', 'none', 'initial']}
+        display={['none', 'none', 'none', 'none', 'none', 'initial']}
       />
-      <Box w='100%' mt='48px' ml={['0px', '0px', '0px', '0px', '220px']}>
+      <Box w='100%' mt={['64px', '64px', '64px', '64px', '64px', '48px']} ml={[0, 0, 0, 0, 0, '220px']}>
         {children}
       </Box>
     </Flex>

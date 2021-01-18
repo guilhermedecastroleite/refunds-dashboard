@@ -8,7 +8,11 @@ import theme from '../../theme/theme';
 const EarningsAndExpenses = ({
   text, value, icon, ...props
 }) => (
-  <Flex alignItems='center' {...props}>
+  <Flex
+    mt={['24px', '24px', 0]}
+    alignItems='center'
+    {...props}
+  >
     <Flex
       w='26px'
       h='26px'

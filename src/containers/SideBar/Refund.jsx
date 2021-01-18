@@ -22,9 +22,22 @@ const Refund = ({ item }) => (
     <Divider orientation='horizontal' mt='24px' w='200px' h='1px' borderColor={theme.colors.gray1} opacity={1} />
 
     {/** Earnings and Expenses */}
-    <Flex mt='57px' w='319px' alignItems='center' justifyContent='space-between'>
+    <Flex
+      mt={['16px', '16px', '57px']}
+      w={['fit-content', 'fit-content', '319px']}
+      alignItems={['flex-start', 'flex-start', 'center']}
+      justifyContent='space-between'
+      flexDirection={['column', 'column', 'row']}
+    >
       <EarningsAndExpenses text='Gastou' value={`${item.currency.code} ${item.declared.toLocaleString()}`} icon={FaArrowUp} />
-      <Divider orientation='vertical' w='1px' h='37px' borderColor={theme.colors.gray1} opacity={1} />
+      <Divider
+        orientation='vertical'
+        w='1px'
+        h='37px'
+        borderColor={theme.colors.gray1}
+        opacity={1}
+        display={['none', 'none', 'initial']}
+      />
       <EarningsAndExpenses text='Recebeu' value={`${item.currency.code} ${item.received.toLocaleString()}`} icon={FaArrowDown} />
     </Flex>
   </>
