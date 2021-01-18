@@ -64,16 +64,22 @@ const TimelineCard = ({ item, ...props }) => {
 
   return (
     <Flex
-      p='24px 48px'
+      py='24px'
+      px={['16px', '16px', '24px', '24px', '48px']}
       bg={theme.colors.white}
       borderRadius='6px'
       boxShadow='md'
       alignItems='center'
       justifyContent='space-between'
+      flexDirection={['column', 'column', 'row']}
       position='relative'
       {...props}
     >
-      <Flex alignItems='center'>
+      <Flex
+        alignItems='center'
+        justifyContent='center'
+        flexDirection={['column', 'column', 'row']}
+      >
         {/** Icon and Date */}
         <Flex flexDirection='column' alignItems='center'>
           <Flex
@@ -90,7 +96,7 @@ const TimelineCard = ({ item, ...props }) => {
         </Flex>
 
         {/** Category and Title */}
-        <Box ml='112px'>
+        <Box mt={['24px', '24px', 0]} ml={[0, 0, '40px', '56px', '64px', '112px']} textAlign={['center', 'center', 'left']}>
           <Text {...theme.typography.xsBold} color={theme.colors.gray2}>
             {'Ação'.toUpperCase()}
           </Text>
@@ -101,7 +107,7 @@ const TimelineCard = ({ item, ...props }) => {
 
         {/** Value */}
         {isExpense && (
-          <Box ml='123px'>
+          <Box mt={['24px', '24px', 0]} ml={[0, 0, '40px', '56px', '64px', '123px']} textAlign={['center', 'center', 'left']}>
             <Text {...theme.typography.xsBold} color={theme.colors.gray2}>
               {'Valor'.toUpperCase()}
             </Text>
@@ -116,7 +122,7 @@ const TimelineCard = ({ item, ...props }) => {
 
         {/** Aprovals */}
         {isEvaluation && (
-          <Box ml='120px'>
+          <Box mt={['24px', '24px', 0]} ml={[0, 0, '40px', '56px', '64px', '120px']}>
             <Text {...theme.typography.xsBold} color={theme.colors.gray2}>
               {'Aprovações'.toUpperCase()}
             </Text>
@@ -136,7 +142,7 @@ const TimelineCard = ({ item, ...props }) => {
 
         {/** Status */}
         {item.status && (
-          <Box ml='128px'>
+          <Box mt={['24px', '24px', 0]} ml={[0, 0, '40px', '56px', '64px', '128px']} textAlign={['center', 'center', 'left']}>
             <Text {...theme.typography.xsBold} color={theme.colors.gray2}>
               {'Status'.toUpperCase()}
             </Text>
@@ -154,7 +160,7 @@ const TimelineCard = ({ item, ...props }) => {
 
       {/** Receipt */}
       {receipt && (
-        <Box ml='24px'>
+        <Box mt={['24px', '24px', 0]} ml={[0, 0, '16px', '16px', '48px', '24px']}>
           <Flex mt='3px' alignItems='center' cursor='pointer'>
             <Icon
               as={FaReceipt}
