@@ -79,7 +79,7 @@ const AddExpense = ({ onCancel, onUpdate, boxProps }) => {
             >
               Cancelar
             </Button>
-            <Button ml='24px' variant='solid' type='submit'>
+            <Button ml='24px' variant='solid' type='submit' isDisabled={!formik.isValid && !formik.isSubmitting}>
               Salvar
             </Button>
           </Flex>
