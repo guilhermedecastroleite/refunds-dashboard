@@ -40,7 +40,7 @@ const Dashboard = () => {
 
   return (
     <Box
-      pl='28px'
+      pl={['16px', '16px', '28px']}
       pr={['16px', '16px', '28px', '28px', 0]}
       pt='12px'
       w='100%'
