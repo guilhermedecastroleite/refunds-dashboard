@@ -27,7 +27,7 @@ const Dashboard = () => {
   ]);
 
   const updateData = (value) => {
-    setTimelineData([...timelineData, value]);
+    setTimelineData([...timelineData, value].sort((a, b) => b.cardDate - a.cardDate));
   };
 
   useEffect(() => {
