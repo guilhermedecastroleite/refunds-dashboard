@@ -10,6 +10,8 @@ import Chip from '../../components/Chips';
 
 import Refund from './Refund';
 import Statement from './Statement';
+import Loading from '../../components/Layout/Loading';
+import Error from '../../components/Layout/Error';
 
 const statuses = (appTheme) => ({
   finished: {
@@ -23,6 +25,8 @@ const statuses = (appTheme) => ({
 });
 
 const SideBar = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [sideBarData, setSideBarData] = useState([{
     id: null,
     accountabilityStatus: 'OPEN',
@@ -38,13 +42,53 @@ const SideBar = () => {
 
   const status = statuses(theme)[sideBarData[0].accountabilityStatus.toLowerCase()];
 
+  // useEffect(() => {
+  //   const fetchSidebarData = async () => {
+  //     const { data } = await getSidebarData();
+  //     setSideBarData(data.content);
+  //   };
+  //   fetchSidebarData();
+  // }, []);
+
   useEffect(() => {
     const fetchSidebarData = async () => {
-      const { data } = await getSidebarData();
-      setSideBarData(data.content);
+      setLoading(true);
+
+      try {
+        const { data } = await getSidebarData();
+        setSideBarData(data.content);
+      }
+
+      catch (err) {
+        setError(err);
+      }
+
+      finally {
+        setLoading(false);
+      }
     };
     fetchSidebarData();
   }, []);
+
+  if (loading) {
+    return (
+      <Flex
+        ml={[0, 0, 0, 0, '24px', '40px', '54px']}
+        px={['40px', '64px', '104px', '197px']}
+        pt='40px'
+        minH='100vh'
+        bg={theme.colors.white}
+        justifyContent='center'
+        alignItems='center'
+      >
+        <Loading />
+      </Flex>
+    );
+  }
+
+  if (error) {
+    return <Error open={error} error={error} />;
+  }
 
   return (
     <Box
