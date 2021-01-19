@@ -1,7 +1,14 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Box, Divider as ChakraDivider, Flex, Grid, GridItem, Icon, Input, Text,
+  Box,
+  Divider as ChakraDivider,
+  Flex,
+  Grid,
+  GridItem,
+  Icon,
+  Input,
+  Text,
 } from '@chakra-ui/react';
 import { FaRegEdit, FaGraduationCap } from 'react-icons/fa';
 import { format } from 'date-fns';
@@ -86,33 +93,11 @@ const Divider = () => {
 };
 
 const Header = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  // const [headerData, setHeaderData] = useState(null);
-  const [headerData, setHeaderData] = useState({
-    type: '',
-    purpose: '',
-    justification: '',
-    accountabilityExtraInfo: {
-      budgetForBreakfast: null,
-      eventDate: new Date(),
-      amountOfPeople: 0,
-    },
-    project: { title: '' },
-    costCenters: [{ id: 0, percentage: 0, name: '' }],
-    fraternizationEducationBudget: false,
-    collaborator: { id: 0, name: '', email: '' },
-  });
-  const [analyst, setAnalyst] = useState('');
+  const [headerData, setHeaderData] = useState();
 
-  // useEffect(() => {
-  //   const fetchHeaderData = async () => {
-  //     const { data } = await getHeaderData();
-  //     setHeaderData(data);
-  //     setAnalyst(data.analyst || '');
-  //   };
-  //   fetchHeaderData();
-  // }, []);
+  const [analyst, setAnalyst] = useState('');
 
   useEffect(() => {
     const fetchHeaderData = async () => {

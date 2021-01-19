@@ -25,30 +25,11 @@ const statuses = (appTheme) => ({
 });
 
 const SideBar = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [sideBarData, setSideBarData] = useState([{
-    id: null,
-    accountabilityStatus: 'OPEN',
-    currency: {
-      id: null,
-      code: '',
-      symbol: '',
-    },
-    declared: 0,
-    approved: 0,
-    received: 0,
-  }]);
+  const [sideBarData, setSideBarData] = useState();
 
-  const status = statuses(theme)[sideBarData[0].accountabilityStatus.toLowerCase()];
-
-  // useEffect(() => {
-  //   const fetchSidebarData = async () => {
-  //     const { data } = await getSidebarData();
-  //     setSideBarData(data.content);
-  //   };
-  //   fetchSidebarData();
-  // }, []);
+  const status = sideBarData && statuses(theme)[sideBarData[0].accountabilityStatus.toLowerCase()];
 
   useEffect(() => {
     const fetchSidebarData = async () => {

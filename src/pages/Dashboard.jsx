@@ -16,7 +16,7 @@ import theme from '../theme/theme';
 import getTimelineData from '../api/timeline';
 
 const Dashboard = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [timelineData, setTimelineData] = useState([]);
@@ -55,7 +55,7 @@ const Dashboard = () => {
     >
       <Breadcrumbs />
       <Flex flexDirection={['column', 'column', 'column', 'column', 'row']}>
-        <Box>
+        <Box width='100%'>
           <Header />
           {/** Top Buttons */}
           <Flex mt='24px' justifyContent='flex-end'>
