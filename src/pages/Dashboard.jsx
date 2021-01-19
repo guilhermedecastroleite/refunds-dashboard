@@ -16,15 +16,10 @@ import theme from '../theme/theme';
 import getTimelineData from '../api/timeline';
 
 const Dashboard = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [timelineData, setTimelineData] = useState([
-    {
-      id: null,
-      cardType: 'expense',
-      cardDate: new Date(),
-      expenseTypeIcon: null,
-    },
-  ]);
+  const [timelineData, setTimelineData] = useState([]);
 
   const updateData = (value) => {
     setTimelineData([...timelineData, value].sort((a, b) => b.cardDate - a.cardDate));
@@ -32,8 +27,20 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchTimelineData = async () => {
-      const { data } = await getTimelineData();
-      setTimelineData(data.content);
+      setLoading(true);
+
+      try {
+        const { data } = await getTimelineData();
+        setTimelineData(data.content);
+      }
+
+      catch (err) {
+        setError(err);
+      }
+
+      finally {
+        setLoading(false);
+      }
     };
     fetchTimelineData();
   }, []);
@@ -73,7 +80,7 @@ const Dashboard = () => {
               onUpdate={updateData}
             />
           )}
-          <Timeline boxProps={{ mt: '24px' }} data={timelineData} />
+          <Timeline boxProps={{ mt: '24px' }} data={timelineData} error={error} loading={loading} />
           <ActionBar />
         </Box>
         <SideBar />
