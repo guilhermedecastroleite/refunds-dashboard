@@ -9,6 +9,8 @@ import { format } from 'date-fns';
 import theme from '../../theme/theme';
 import getHeaderData from '../../api/header';
 import { useWindowSize } from '../../hooks/useWindowSize';
+import Loading from '../../components/Layout/Loading';
+import Error from '../../components/Layout/Error';
 
 const types = {
   REFUND: 'Reembolso',
@@ -16,6 +18,25 @@ const types = {
 
 const purposes = {
   FRATERNIZATION: 'Confraternização',
+};
+
+const HeaderCard = ({ children }) => (
+  <Box
+    mt='36px'
+    py='24px'
+    px={['24px', '24px', '48px', '48px', '48px']}
+    w='100%'
+    h='fit-content'
+    bg={`linear-gradient(to right, ${theme.colors.green3} 3%, ${theme.colors.blue3})`}
+    borderRadius='12px'
+    position='relative'
+  >
+    {children}
+  </Box>
+);
+
+HeaderCard.propTypes = {
+  children: PropTypes.any.isRequired,
 };
 
 const ListItem = ({ title, content, ...props }) => (
@@ -65,6 +86,9 @@ const Divider = () => {
 };
 
 const Header = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  // const [headerData, setHeaderData] = useState(null);
   const [headerData, setHeaderData] = useState({
     type: '',
     purpose: '',
@@ -81,26 +105,52 @@ const Header = () => {
   });
   const [analyst, setAnalyst] = useState('');
 
+  // useEffect(() => {
+  //   const fetchHeaderData = async () => {
+  //     const { data } = await getHeaderData();
+  //     setHeaderData(data);
+  //     setAnalyst(data.analyst || '');
+  //   };
+  //   fetchHeaderData();
+  // }, []);
+
   useEffect(() => {
     const fetchHeaderData = async () => {
-      const { data } = await getHeaderData();
-      setHeaderData(data);
-      setAnalyst(data.analyst || '');
+      setLoading(true);
+
+      try {
+        const { data } = await getHeaderData();
+        setHeaderData(data);
+        setAnalyst(data.analyst || '');
+      }
+
+      catch (err) {
+        setError(err);
+      }
+
+      finally {
+        setLoading(false);
+      }
     };
     fetchHeaderData();
   }, []);
 
+  if (loading) {
+    return (
+      <HeaderCard>
+        <Flex w='100%' justifyContent='center' alignItems='center'>
+          <Loading />
+        </Flex>
+      </HeaderCard>
+    );
+  }
+
+  if (error) {
+    return <Error open={error} error={error} />;
+  }
+
   return (
-    <Box
-      mt='36px'
-      py='24px'
-      px={['24px', '24px', '48px', '48px', '48px']}
-      w='100%'
-      h='fit-content'
-      bg={`linear-gradient(to right, ${theme.colors.green3} 3%, ${theme.colors.blue3})`}
-      borderRadius='12px'
-      position='relative'
-    >
+    <HeaderCard>
       <Icon
         as={FaRegEdit}
         color={theme.colors.white}
@@ -194,7 +244,7 @@ const Header = () => {
           </>
         )}
       </Flex>
-    </Box>
+    </HeaderCard>
   );
 };
 
