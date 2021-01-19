@@ -59,27 +59,38 @@ const AddExpense = ({ onCancel, onUpdate, boxProps }) => {
       <Box mt='24px' w='100%' boxShadow='md' borderRadius='6px' overflow='hidden'>
         <form onSubmit={formik.handleSubmit}>
           {/** Form */}
-          <Box pt='24px' pb='12px' px='48px' bg={theme.colors.offWhite}>
+          <Box pt='24px' pb='12px' px={['16px', '16px', '24px', '48px']} bg={theme.colors.offWhite}>
             <Text {...theme.typography.lgBold} color={theme.colors.gray9}>Nova Despesa</Text>
             <AddExpenseForm formik={formik} />
           </Box>
 
           {/** Card Bottom Bar */}
           <Flex
-            h='77px'
             pr='24px'
+            pl={['24px', '24px', 0]}
+            pt='24px'
+            pb='18px'
             justifyContent='flex-end'
+            flexDirection={['column', 'column', 'row']}
             alignItems='center'
             bg={theme.colors.white}
           >
             <Button
+              w={['100%', '100%', 'fit-content']}
               variant='outline'
               type='button'
               onClick={onCancel}
             >
               Cancelar
             </Button>
-            <Button ml='24px' variant='solid' type='submit' isDisabled={!formik.isValid && !formik.isSubmitting}>
+            <Button
+              w={['100%', '100%', 'fit-content']}
+              mt={['16px', '16px', 0]}
+              ml={[0, 0, '24px']}
+              variant='solid'
+              type='submit'
+              isDisabled={!formik.isValid && !formik.isSubmitting}
+            >
               Salvar
             </Button>
           </Flex>

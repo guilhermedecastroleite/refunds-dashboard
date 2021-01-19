@@ -18,9 +18,9 @@ const AddExpenseForm = ({ formik }) => {
   };
 
   return (
-    <Flex>
+    <Flex flexDirection={['column', 'column', 'row']}>
       {/** File Upload */}
-      <Box p='52px 92px' bg={theme.colors.white}>
+      <Box flex={1} p={[0, 0, '24px', '24px', '52px 92px']} textAlign='center' bg={theme.colors.white}>
         <Flex alignItems='center'>
           <Text {...theme.typography.mdBold} color={theme.colors.gray8}>
             Recibo, cupom ou nota fiscal*
@@ -35,7 +35,13 @@ const AddExpenseForm = ({ formik }) => {
           onChange={(e) => formik.setFieldValue('file', e.target.files[0])}
           style={{ display: 'none' }}
         />
-        <Box mt='9px' p='110px 24px 44px 24px' border={`1px dashed ${theme.colors.gray12}`} borderRadius='3px'>
+        <Box
+          mt='9px'
+          p={['24px 8px', '24px 8px', '110px 8px 44px 8px', '110px 24px 44px 24px']}
+          border={`1px dashed ${theme.colors.gray12}`}
+          borderRadius='3px'
+          whiteSpace='normal'
+        >
           <Button
             type='button'
             variant='outline'
@@ -46,7 +52,7 @@ const AddExpenseForm = ({ formik }) => {
             Selecione um arquivo do seu computador
           </Button>
         </Box>
-        <Text {...theme.typography.xs} color={theme.colors.gray13}>
+        <Text mt='8px' {...theme.typography.xs} color={theme.colors.gray13}>
           A imagem deve estar no formato JPG ou PNG.
         </Text>
         {(formik.touched.file && formik.errors.file) && (
@@ -57,7 +63,7 @@ const AddExpenseForm = ({ formik }) => {
       </Box>
 
       {/** Inputs */}
-      <Box ml='48px'>
+      <Box flex={1} w='100%' mt={['16px', '16px', 0]} ml={[0, 0, '48px']}>
         <Text mb='12px' {...theme.typography.mdBold}>Tipo *</Text>
         <Select
           name='type'
@@ -109,7 +115,7 @@ const AddExpenseForm = ({ formik }) => {
         </Select>
 
         {formik.values.currency && (
-          <Flex my='12px'>
+          <Flex my='12px' flexDirection={['column', 'column', 'row']}>
             <div>
               <Text mb='12px' {...theme.typography.mdBold}>Valor da nota / cupom *</Text>
               <Input
@@ -122,7 +128,7 @@ const AddExpenseForm = ({ formik }) => {
                 placeholder='Ex: 120'
               />
             </div>
-            <Box ml='45px'>
+            <Box mt={['12px', '12px', 0]} ml={[0, 0, '45px']}>
               <Text mb='12px' {...theme.typography.mdBold}>Valor a ser considerado *</Text>
               <Input
                 name='consideredReceiptValue'
