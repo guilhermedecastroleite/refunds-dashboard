@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import Datepicker from 'react-datepicker';
 import {
@@ -10,34 +11,39 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import theme from '../../theme/theme';
 
-const CustomInput = ({ value, onClick }) => (
-  <Button
-    w='100%'
-    variant='outline'
-    onClick={onClick}
-    bg={theme.colors.white}
-    color={theme.colors.gray4}
-    borderColor={theme.colors.gray12}
-    justifyContent='flex-start'
-    leftIcon={(
-      <Flex
-        w='38px'
-        h='36px'
-        ml='-16px'
-        bg={theme.colors.gray12}
-        alignItems='center'
-        justifyContent='center'
-        borderRadius='0.375rem 0 0 0.375rem'
-      >
-        <Icon as={FaRegCalendar} />
-      </Flex>
-    )}
-  >
-    <Box pl='4px'>
-      {value || 'Selecione uma data'}
-    </Box>
-  </Button>
-);
+const CustomInput = React.forwardRef((props, ref) => {
+  const { onClick, value } = props;
+  return (
+    <Button
+      ref={ref}
+      data-testid='datepicker'
+      w='100%'
+      variant='outline'
+      onClick={onClick}
+      bg={theme.colors.white}
+      color={theme.colors.gray4}
+      borderColor={theme.colors.gray12}
+      justifyContent='flex-start'
+      leftIcon={(
+        <Flex
+          w='38px'
+          h='36px'
+          ml='-16px'
+          bg={theme.colors.gray12}
+          alignItems='center'
+          justifyContent='center'
+          borderRadius='0.375rem 0 0 0.375rem'
+        >
+          <Icon as={FaRegCalendar} />
+        </Flex>
+      )}
+    >
+      <Box pl='4px'>
+        {value || 'Selecione uma data'}
+      </Box>
+    </Button>
+  );
+});
 
 CustomInput.propTypes = {
   value: PropTypes.string,
@@ -57,7 +63,7 @@ const CustomDatepicker = ({ error, ...props }) => (
       {...props}
     />
     {error && (
-      <Text {...theme.typography.xs} color={theme.colors.red2}>
+      <Text data-testid='datepicker-error' {...theme.typography.xs} color={theme.colors.red2}>
         {error}
       </Text>
     )}
@@ -65,7 +71,11 @@ const CustomDatepicker = ({ error, ...props }) => (
 );
 
 CustomDatepicker.propTypes = {
-  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+};
+
+CustomDatepicker.defaultProps = {
+  error: false,
 };
 
 export default CustomDatepicker;

@@ -8,8 +8,7 @@ import { FaQuestionCircle } from 'react-icons/fa';
 import theme from '../../theme/theme';
 import { currencies, expenses } from '../../config/maps';
 
-import { Select, Input } from '../../components/Inputs';
-import DatePicker from '../../components/Inputs/Datepicker';
+import { Select, Input, Datepicker } from '../../components/Inputs';
 
 const AddExpenseForm = ({ formik }) => {
   const fileInput = useRef();
@@ -92,7 +91,7 @@ const AddExpenseForm = ({ formik }) => {
         />
 
         <Text my='12px' {...theme.typography.mdBold}>Data do comprovante *</Text>
-        <DatePicker
+        <Datepicker
           name='date'
           maxDate={new Date()}
           selected={formik.values.date}
