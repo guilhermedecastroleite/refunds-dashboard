@@ -10,6 +10,7 @@ const Chip = ({
   color, children, ...props
 }) => (
   <Flex
+    data-testid='chip'
     p='6px 12px'
     w='fit-content'
     color={color}
@@ -28,7 +29,7 @@ Chip.propTypes = {
 };
 
 Chip.defaultProps = {
-  color: '',
+  color: '#d0d3d6',
   children: null,
 };
 

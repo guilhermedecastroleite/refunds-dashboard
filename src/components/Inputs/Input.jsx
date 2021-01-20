@@ -5,9 +5,9 @@ import theme from '../../theme/theme';
 
 const Input = ({ error, ...props }) => (
   <>
-    <ChakraInput {...props} />
+    <ChakraInput data-testid='input' {...props} />
     {error && (
-      <Text {...theme.typography.xs} color={theme.colors.red2}>
+      <Text data-testid='input-error' {...theme.typography.xs} color={theme.colors.red2}>
         {error}
       </Text>
     )}

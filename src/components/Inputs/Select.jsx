@@ -5,11 +5,11 @@ import theme from '../../theme/theme';
 
 const Select = ({ error, children, ...props }) => (
   <>
-    <ChakraSelect {...props}>
+    <ChakraSelect data-testid='input' {...props}>
       {children}
     </ChakraSelect>
     {error && (
-      <Text {...theme.typography.xs} color={theme.colors.red2}>
+      <Text data-testid='input-error' {...theme.typography.xs} color={theme.colors.red2}>
         {error}
       </Text>
     )}
