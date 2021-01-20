@@ -7,7 +7,9 @@ import { FaQuestionCircle } from 'react-icons/fa';
 
 import theme from '../../theme/theme';
 import { currencies, expenses } from '../../config/maps';
+
 import { Select, Input } from '../../components/Inputs';
+import DatePicker from '../../components/Inputs/Datepicker';
 
 const AddExpenseForm = ({ formik }) => {
   const fileInput = useRef();
@@ -90,14 +92,13 @@ const AddExpenseForm = ({ formik }) => {
         />
 
         <Text my='12px' {...theme.typography.mdBold}>Data do comprovante *</Text>
-        <Input
+        <DatePicker
           name='date'
-          type='date'
-          value={formik.values.date}
-          onChange={formik.handleChange('date')}
+          maxDate={new Date()}
+          selected={formik.values.date}
+          onChange={(date) => formik.setFieldValue('date', date)}
           onBlur={formik.handleBlur('date')}
-          error={formik.touched.date ? formik.errors.date : ''}
-          placeholder='Selecione a data'
+          error={formik.touched.error ? formik.errors.error : ''}
         />
 
         <Text mt='12px' {...theme.typography.mdBold}>Moeda *</Text>

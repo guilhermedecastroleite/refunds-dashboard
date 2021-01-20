@@ -9,7 +9,7 @@ import { useWindowSize } from '../../hooks/useWindowSize';
 const BasePage = ({ children }) => {
   const size = useWindowSize();
   const menuRef = useRef();
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(size.width > 1536);
 
   const handleClick = (e) => {
     if (menuRef.current.contains(e.target)) {
