@@ -48,13 +48,13 @@ const Dashboard = () => {
   return (
     <Box
       pl={['16px', '16px', '28px']}
-      pr={['16px', '16px', '28px', '28px', 0]}
+      pr={['16px', '16px', '28px', '28px', '28px', 0]}
       pt='12px'
       w='100%'
       bg={theme.colors.offWhite2}
     >
       <Breadcrumbs />
-      <Flex flexDirection={['column', 'column', 'column', 'column', 'row']}>
+      <Flex flexDirection={['column', 'column', 'column', 'column', 'column', 'row']}>
         <Box width='100%'>
           <Header />
           {/** Top Buttons */}

@@ -54,9 +54,11 @@ const SideBar = () => {
   if (loading) {
     return (
       <Flex
-        ml={[0, 0, 0, 0, '24px', '40px', '54px']}
+        ml={[0, 0, 0, '24px', '40px', '54px']}
         px={['40px', '64px', '104px', '197px']}
-        pt='40px'
+        mt={['24px', '24px', '12px']}
+        mb={['24px', '24px', 0]}
+        py='40px'
         minH='100vh'
         bg={theme.colors.white}
         justifyContent='center'
@@ -73,8 +75,10 @@ const SideBar = () => {
 
   return (
     <Box
-      ml={[0, 0, 0, '16px', '24px', '40px', '54px']}
-      pt='40px'
+      ml={[0, 0, 0, 0, 0, '24px', '40px', '54px']}
+      mt={[0, 0, '24px', '24px', '24px', '12px']}
+      mb={['24px', '24px', '24px', '24px', '24px', 0]}
+      py='40px'
       minH='100vh'
       bg={theme.colors.white}
     >
