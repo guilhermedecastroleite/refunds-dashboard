@@ -59,7 +59,7 @@ const BasePage = ({ children }) => {
           zIndex={9999}
           bg={theme.colors.blue4}
           position='fixed'
-          left={showMenu ? 0 : '-220px'}
+          left={(showMenu || size.width > 1536) ? 0 : '-220px'}
           transition='all 300ms ease-in-out'
           ref={menuRef}
         />
