@@ -19,6 +19,7 @@ import { useWindowSize } from '../../hooks/useWindowSize';
 import Loading from '../../components/Layout/Loading';
 import Error from '../../components/Layout/Error';
 
+// Ideally all possible types and purposes should be listed for translation
 const types = {
   REFUND: 'Reembolso',
 };
@@ -139,6 +140,8 @@ const Header = () => {
       <Icon
         as={FaRegEdit}
         color={theme.colors.white}
+        // eslint-disable-next-line no-console
+        onClick={() => console.log('Edit header')}
         style={{
           position: 'absolute', right: '12px', top: '12px', cursor: 'pointer', fontSize: '21px',
         }}

@@ -19,6 +19,8 @@ const ActionBar = () => (
       borderColor={theme.colors.red2}
       color={theme.colors.red2}
       w={['100%', '100%', 'fit-content']}
+      // eslint-disable-next-line no-console
+      onClick={() => console.log('Cancelar solicitação')}
     >
       Cancelar Solicitação
     </Button>
@@ -34,6 +36,8 @@ const ActionBar = () => (
         borderColor={theme.colors.green4}
         color={theme.colors.green9}
         w={['100%', '100%', 'fit-content']}
+        // eslint-disable-next-line no-console
+        onClick={() => console.log('Continuar depois')}
       >
         Continuar depois
       </Button>
@@ -41,6 +45,8 @@ const ActionBar = () => (
         mt={['16px', '16px', 0]}
         ml={[0, 0, '24px']}
         w={['100%', '100%', 'fit-content']}
+        // eslint-disable-next-line no-console
+        onClick={() => console.log('Enviar para aprovação')}
       >
         Enviar para aprovação
       </Button>

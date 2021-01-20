@@ -5,6 +5,7 @@ import {
 
 import theme from '../../theme/theme';
 import getSidebarData from '../../api/sidebar';
+import { requestStatuses } from '../../config/maps';
 
 import Chip from '../../components/Chips';
 
@@ -13,23 +14,12 @@ import Statement from './Statement';
 import Loading from '../../components/Layout/Loading';
 import Error from '../../components/Layout/Error';
 
-const statuses = (appTheme) => ({
-  finished: {
-    label: 'Concluído',
-    color: appTheme.colors.green6,
-  },
-  open: {
-    label: 'Aguardando financeiro',
-    color: appTheme.colors.blue4,
-  },
-});
-
 const SideBar = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [sideBarData, setSideBarData] = useState();
 
-  const status = sideBarData && statuses(theme)[sideBarData[0].accountabilityStatus.toLowerCase()];
+  const status = sideBarData && requestStatuses[sideBarData[0].accountabilityStatus.toLowerCase()];
 
   useEffect(() => {
     const fetchSidebarData = async () => {

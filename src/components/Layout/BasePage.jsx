@@ -48,6 +48,7 @@ const BasePage = ({ children }) => {
           as={FaBars}
           color={theme.colors.white}
           fontSize='24px'
+          cursor='pointer'
           display={['initial', 'initial', 'initial', 'initial', 'initial', 'none']}
           onClick={() => setShowMenu(true)}
         />

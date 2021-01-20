@@ -9,8 +9,8 @@ import Header from '../containers/Header';
 import SideBar from '../containers/SideBar';
 import Timeline from '../containers/Timeline';
 import ActionBar from '../containers/ActionBar';
+import AddExpense from '../containers/AddExpense';
 import Breadcrumbs from '../components/Breadcrumbs';
-import AddExpense from '../containers/Expenses/AddExpense';
 
 import theme from '../theme/theme';
 import getTimelineData from '../api/timeline';

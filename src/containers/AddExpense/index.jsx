@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import {
-  Box, Button, Flex, Icon, Text,
+  Box, Button, Flex, Text,
 } from '@chakra-ui/react';
 
 import { useFormik } from 'formik';

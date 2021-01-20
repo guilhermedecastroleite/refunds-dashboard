@@ -30,3 +30,15 @@ export const statuses = {
     color: theme.colors.green7,
   },
 };
+
+// Ideally all possible statuses should be listed for translation
+export const requestStatuses = {
+  finished: {
+    label: 'Concluído',
+    color: theme.colors.green6,
+  },
+  open: {
+    label: 'Aguardando financeiro',
+    color: theme.colors.blue4,
+  },
+};
