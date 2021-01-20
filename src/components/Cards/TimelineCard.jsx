@@ -64,6 +64,7 @@ const TimelineCard = ({ item, ...props }) => {
 
   return (
     <Flex
+      data-testid='timeline-card'
       py='24px'
       px={['16px', '16px', '24px', '24px', '48px']}
       bg={theme.colors.white}
@@ -90,24 +91,24 @@ const TimelineCard = ({ item, ...props }) => {
             bg={currentItem[type].backgroundColor}
             borderRadius='50%'
           >
-            <Icon fontSize='20px' as={currentItem[type].icon} color={currentItem[type].iconColor} />
+            <Icon data-testid='card-icon' fontSize='20px' as={currentItem[type].icon} color={currentItem[type].iconColor} />
           </Flex>
-          <Text mt='10px' {...theme.typography.sm}>{format(new Date(item.cardDate), 'dd/MM/yyyy')}</Text>
+          <Text data-testid='card-date' mt='10px' {...theme.typography.sm}>{format(new Date(item.cardDate), 'dd/MM/yyyy')}</Text>
         </Flex>
 
         {/** Category and Title */}
         <Box mt={['24px', '24px', 0]} ml={[0, 0, '40px', '56px', '64px', '112px']} textAlign={['center', 'center', 'left']}>
-          <Text {...theme.typography.xsBold} color={theme.colors.gray2}>
+          <Text data-testid='card-category' {...theme.typography.xsBold} color={theme.colors.gray2}>
             {'Ação'.toUpperCase()}
           </Text>
-          <Text mt='3px' {...theme.typography.lgBold} color={theme.colors.gray6}>
+          <Text data-testid='card-title' mt='3px' {...theme.typography.lgBold} color={theme.colors.gray6}>
             {currentItem[type].text}
           </Text>
         </Box>
 
         {/** Value */}
         {isExpense && (
-          <Box mt={['24px', '24px', 0]} ml={[0, 0, '40px', '56px', '64px', '123px']} textAlign={['center', 'center', 'left']}>
+          <Box data-testid='card-expense' mt={['24px', '24px', 0]} ml={[0, 0, '40px', '56px', '64px', '123px']} textAlign={['center', 'center', 'left']}>
             <Text {...theme.typography.xsBold} color={theme.colors.gray2}>
               {'Valor'.toUpperCase()}
             </Text>
@@ -122,7 +123,7 @@ const TimelineCard = ({ item, ...props }) => {
 
         {/** Aprovals */}
         {isEvaluation && (
-          <Box mt={['24px', '24px', 0]} ml={[0, 0, '40px', '56px', '64px', '120px']}>
+          <Box data-testid='card-evaluation' mt={['24px', '24px', 0]} ml={[0, 0, '40px', '56px', '64px', '120px']}>
             <Text {...theme.typography.xsBold} color={theme.colors.gray2}>
               {'Aprovações'.toUpperCase()}
             </Text>
@@ -142,7 +143,7 @@ const TimelineCard = ({ item, ...props }) => {
 
         {/** Status */}
         {item.status && (
-          <Box mt={['24px', '24px', 0]} ml={[0, 0, '40px', '56px', '64px', '128px']} textAlign={['center', 'center', 'left']}>
+          <Box data-testid='card-status' mt={['24px', '24px', 0]} ml={[0, 0, '40px', '56px', '64px', '128px']} textAlign={['center', 'center', 'left']}>
             <Text {...theme.typography.xsBold} color={theme.colors.gray2}>
               {'Status'.toUpperCase()}
             </Text>
@@ -160,14 +161,14 @@ const TimelineCard = ({ item, ...props }) => {
 
       {/** Receipt */}
       {receipt && (
-        <Box mt={['24px', '24px', 0]} ml={[0, 0, '16px', '16px', '48px', '24px']}>
+        <Box data-testid='card-receipt' mt={['24px', '24px', 0]} ml={[0, 0, '16px', '16px', '48px', '24px']}>
           <Flex mt='3px' alignItems='center' cursor='pointer'>
             <Icon
               as={FaReceipt}
               {...theme.typography.mdBold}
               color={theme.colors.green4}
             />
-            <Text ml='4px' {...theme.typography.mdBold} color={theme.colors.green4} as='a' href={receipt}>
+            <Text data-testid='card-receipt-link' ml='4px' {...theme.typography.mdBold} color={theme.colors.green4} as='a' href={receipt}>
               Ver recibo
             </Text>
           </Flex>
